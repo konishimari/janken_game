@@ -5,77 +5,102 @@
 <meta name="viewport" content="width=device-width">
 <script src="js/jquery-2.1.3.min.js"></script>
 <link rel="stylesheet" href="css/sample.css">
-<title>ココちゃんとジャンケンしよう</title>
+<link rel="stylesheet" href="css/style.css">
+<title>ココちゃんの目玉焼きをゲットできるか。</title>
 <style>
   body{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition: background-color 0.5s ease;
+  }
+
+  .orange-background {
+    background-color: orange;
+  }
+
+  .blue-background {
+    background-color: blue;
+  }
+
+  .green-background {
+    background-color: green;
   }
 </style>
 </head>
-
 <body>
   <div class="container">
-    <audio controls src="./img/MANYUKO - California.mp3" type="audio/mp3">BGM_California</audio>
-    <div class="header">
-      <img src="./img/janken-icon.png" alt="ジャンケンしよう">
-      <h1>ココちゃんとジャンケンしよう</h1>
+    <audio src="./img/MANYUKO - California.mp3">
+    </audio>
+    <header id="header">
+      <div class="header_logo">
+        <img autoplay src="./img/janken-icon.png" alt="じゃんけんアイコン">
+      </div>
+      <div class="header_title">
+        <h1>ジャンケンゲーム</h1>
+      </div>
+    </header>
+    <div id="hero">
+        <video width="700" height="700" src="./img/RPReplay_Final1682150749.mov">
+        </video>
+        <h1>ココちゃんの目玉焼きをゲットできるか！</h1>
     </div>
-    <div class="top_image">
-      <img src="./img/POLY目玉焼き.png" alt="Pollyちゃん:">
+    <div class="gamecomputer_group">
+      <p id="message">トライボタンを押したらはじまるよ！</p>
+      <button onclick="startGame()">トライ</button>
     </div>
-    <div class=""></div>
-    <p id="message">トライボタンを押して始めてください</p>
-    <button onclick="startGame()">トライ</button>
-    <div id="choices" style="display: none;">
-      <button onclick="playerChoice('rock')">グー</button>
-      <button onclick="playerChoice('scissors')">チョキ</button>
-      <button onclick="playerChoice('paper')">パー</button>
+    <div class="gameplayer_group">
+      <div id="choices" style="display: none;">
+        <button onclick="playerChoice('rock')">グー</button>
+        <button onclick="playerChoice('scissors')">チョキ</button>
+        <button onclick="playerChoice('paper')">パー</button>
+      </div>
     </div>
-    <p id="result"></p>
+      <p id="result"></p>
 
-    <script>
-      var playerSelection = '';
-      var resultElement = document.getElementById('result');
-      var messageElement = document.getElementById('message');
-      var choicesElement = document.getElementById('choices');
+      <script>
+        var playerSelection = '';
+        var resultElement = document.getElementById('result');
+        var messageElement = document.getElementById('message');
+        var choicesElement = document.getElementById('choices');
 
-      function startGame() {
-      // 結果をクリアする
-      resultElement.textContent = '';
-      // メッセージを表示する
-      messageElement.textContent = 'さあ、いくよー';
-      setTimeout(function() {
-        messageElement.textContent = 'じゃんけん';
-        setTimeout(function() {
-          messageElement.textContent = ' グー、チョキ、パー';
-          choicesElement.style.display = 'block';
-        }, 1000);
-      }, 1000);
-      }
-
-
-      function playerChoice(choice) {
-        playerSelection = choice;
-        choicesElement.style.display = 'none';
-        var choices = ['rock', 'scissors', 'paper'];
-        var computerChoice = choices[Math.floor(Math.random() * 3)];
-
-        // コンピューターの選択と一緒に勝ち負けを表示する
-        var result = '';
-        if (playerSelection === computerChoice) {
-          result = 'あいこ！もう１回';
-        } else if (
-          (playerSelection === 'rock' && computerChoice === 'scissors') ||
-          (playerSelection === 'scissors' && computerChoice === 'paper') ||
-          (playerSelection === 'paper' && computerChoice === 'rock')
-        ) {
-          result = '勝ち！';
-        } else {
-          result = '負け！';
+        function startGame() {
+          document.body.classList.remove('orange-background', 'blue-background', 'green-background');
+          messageElement.textContent = 'さあ、いくよー';
+          setTimeout(function() {
+            messageElement.textContent = '勝負！'; 
+            $("video")[0].play();
+          setTimeout(function() {
+              messageElement.textContent = ' グー、チョキ、パー';
+              choicesElement.style.display = 'block';
+            }, 3200);
+          }, 1000);
         }
-        resultElement.textContent = 'あなた：' + playerSelection + ' Pollyちゃん：' + computerChoice + ' 結果は' + result;
-      }
-    </script>
+
+        function playerChoice(choice) {
+          playerSelection = choice;
+          choicesElement.style.display = 'none';
+          var choices = ['rock', 'scissors', 'paper'];
+          var computerChoice = choices[Math.floor(Math.random() * 3)];
+
+          // コンピューターの選択と一緒に勝ち負けを表示する
+          var result = '';
+          if (playerSelection === computerChoice) {
+            result = '引き分け もう１回！';
+            document.body.classList.add('green-background');
+          } else if (
+            (playerSelection === 'rock' && computerChoice === 'scissors') ||
+            (playerSelection === 'scissors' && computerChoice === 'paper') ||
+            (playerSelection === 'paper' && computerChoice === 'rock')
+          ) {
+            result = '勝ち！';
+            document.body.classList.add('orange-background');
+          } else {
+            result = '負け！';
+            document.body.classList.add('blue-background');
+          }
+          resultElement.textContent = 'あなた：' + playerSelection + ' Pollyちゃん：' + computerChoice + ' 結果：' + result;
+          }
+        </script>
+        </div>
   </div>
 </body>
 </html>
