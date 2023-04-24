@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+.background {
+    background-color:whitesmoke
+}
+h1 {
+    font-family: "Nico Moji";
+    font-size: 60px ;
+    color:hotpink
+  } 
+.header{
+    display: flex;
+    justify-content: center;
+}
+.header_logo{
+    width: 120px;
+    margin-top: 50px;
+}
+.header_title{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.hero{
+    width: 1200px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.hero_copy{
+    margin-left: 100px;
+    display: flex;
+
+}
+.hero_image {
+    display: flex;
+    justify-content: center;
+}
+.gamecomputer_group{
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}
+p {
+    font-family: "Nico Moji";
+    font-size: 50px ;
+    color:hotpink
+  } 
+
+.gameplayer_group {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.gamecomputer_group button{
+    width:90px;
+    height:90px;
+    line-height:90px;
+}
+.gamecomputer_group button{
+    display:block;
+    justify-content: center;
+    width: 100;%;
+    height: 100;px;
+    text-decoration: none;
+    background:#FF8181;
+    text-align:center;
+    color:#FFFFFF;
+    font-size:20px;
+    font-weight:bold;
+    border-radius:50px;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    box-shadow:0px 5px 8px 0px #BBBBBB ;
+    text-shadow:0px 1px 1px #9c9797 ;
+    margin-top: 30px;
+}
+
+.gameplayer_group button {
+    
+    border-radius: 50%; /* ボタンを丸くする */
+    padding: 10px; /* ボタンの内側の余白を調整 */
+}
