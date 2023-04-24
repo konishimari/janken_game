@@ -53,10 +53,10 @@
 
     <section class="hero">
       <div class="hero_copy">
-        <h1>ココちゃんの<br>めだまやき🍳をゲットできるかな！</h1>
+        <h1>ココちゃんの<br>めだまやき🍳を<br>ゲットできるかな！</h1>
       </div>
       <div class="hero_image">
-        <video width="700" height="600" src="./img/RPReplay_Final1682150749.mov"alt="cocoちゃんアバター">
+        <video width="500" height="500" src="./img/RPReplay_Final1682150749.mov"alt="cocoちゃんアバター">
         </video>
       </div>
     </section>
@@ -75,7 +75,7 @@
         <button onclick="playerChoice('パー')">パー</button>
       </div>
     </div>
-    <div>
+    <div class="result">
       <p id="result"></p>
     </div>
 
@@ -121,10 +121,9 @@
             result = 'ざんねんでした！';
             document.body.classList.add('blue-background');
           }
-          resultElement.textContent = 'あなた:' + playerSelection 
-  + ' ココちゃん:' + computerChoice 
-  + ' wow!' + result;
- }
+          resultElement.textContent = 'あなた:' + playerSelection + ' ココちゃん:' + computerChoice 
+          + ' wow!' + result;
+          }
         </script>
         </div>
   </div>
